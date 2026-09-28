@@ -1,0 +1,41 @@
+class Conta:
+    def __init__(self, titular, saldo, senha):
+        self.titular = titular
+        self.saldo = saldo
+        self.senha = senha
+
+    def saque (self, valor,senha):
+          if self.senha == senha:
+            if self.saldo >= valor: 
+              self.saldo-=valor
+              print(f"Saque de {valor}, efetuado com suceso")
+              print(f"O seu saldo atual é de {self.saldo}")
+            else:
+              print("Saldo insuficiente")
+          else:
+            print("Senha incorreta.")
+
+    def deposito(self, valor):
+        if valor > 0:
+            self.saldo += valor
+            print(f"Depósito de R${valor:.2f} realizado com sucesso.")
+        else:
+            print("Valor inválido para depósito.")
+
+    def ver_saldo(self):
+        print(f"Titular: {self.titular} | Saldo atual: R${self.saldo:.2f}")
+
+    def transferencia(self, valor, conta_destino):
+        if self.saldo >= valor:
+            self.saldo -= valor
+            conta_destino.saldo += valor
+            print(
+                f"Transferência de R${valor:.2f} para {conta_destino.titular} realizada com sucesso."
+            )
+        else:
+            print("Saldo insuficiente para realizar a transferência.")
+
+#instanciar objeto
+Conta1 = Conta("Maisa",1000,"12345")
+
+Conta1.saque(20,"12345")
