@@ -9,3 +9,8 @@ def saque (self, valor):
     self.saldo-=valor
   else:
     print("Saldo insuficiente")
+
+#instanciar objeto
+conta1 = Conta("Maisa",1000,"12345")
+
+conta1.saque(100)
